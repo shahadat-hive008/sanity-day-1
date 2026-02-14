@@ -5,6 +5,9 @@ export default defineCliConfig({
     projectId: 'vueoaspm',
     dataset: 'production',
   },
+  server: {
+    port: 3334,
+  },
   deployment: {
     appId: 'l56n7vwcbpw2tt6432o2mqaa',
     /**
