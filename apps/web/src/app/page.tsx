@@ -1,15 +1,21 @@
 import Link from "next/link";
 import { defineQuery } from "next-sanity";
 import { sanityFetch } from "@/sanity/live";
+import type { EVENT_QUERY_RESULT } from "@/sanity/types";
 
 const EVENTS_QUERY = defineQuery(`*[
   _type == "event"
   && defined(slug.current)
   && date > now()
 ]|order(date asc){_id, name, slug, date}`);
-
 export default async function IndexPage() {
-  const { data: events } = await sanityFetch({ query: EVENTS_QUERY });
+  type EVENTS_QUERY_RESULT = ReturnType<
+    typeof defineQuery<typeof EVENTS_QUERY>
+  >;
+
+  const { data: events } = await sanityFetch<EVENTS_QUERY_RESULT>({
+    query: EVENTS_QUERY,
+  });
 
   return (
     <main className="flex min-h-screen flex-col p-24 gap-12">
@@ -17,10 +23,10 @@ export default async function IndexPage() {
         Events
       </h1>
       <ul className="grid grid-cols-1 gap-12 lg:grid-cols-2">
-        {events.map((event) => (
+        {events.map((event: EVENT_QUERY_RESULT) => (
           <li
             className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm dark:shadow-gray-900/20"
-            key={event._id}
+            key={event?._id}
           >
             <Link
               className="hover:underline block"

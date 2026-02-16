@@ -27,16 +27,8 @@ export default async function EventPage({
   if (!event) {
     notFound();
   }
-  const {
-    name,
-    date,
-    headline,
-    details,
-    eventType,
-    doorsOpen,
-    venue,
-    tickets,
-  } = event;
+  const { name, date, headline, details, format, doorsOpen, venue, tickets } =
+    event;
 
   const eventDate = new Date(date).toDateString();
   const eventTime = new Date(date).toLocaleTimeString();
@@ -73,9 +65,9 @@ export default async function EventPage({
         />
         <div className="flex flex-col justify-center space-y-4">
           <div className="space-y-4">
-            {eventType ? (
+            {format ? (
               <div className="inline-block rounded-lg bg-gray-100 dark:bg-gray-800 px-3 py-1 text-sm text-gray-700 dark:text-gray-300 capitalize">
-                {eventType.replace("-", " ")}
+                {format.replace("-", " ")}
               </div>
             ) : null}
             {name ? (

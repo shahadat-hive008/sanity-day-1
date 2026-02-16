@@ -142,7 +142,34 @@
       "eventType": {
         "type": "objectAttribute",
         "value": {
-          "type": "string"
+          "type": "union",
+          "of": [
+            {
+              "type": "string",
+              "value": "in-person"
+            },
+            {
+              "type": "string",
+              "value": "virtual"
+            }
+          ]
+        },
+        "optional": true
+      },
+      "format": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "union",
+          "of": [
+            {
+              "type": "string",
+              "value": "in-person"
+            },
+            {
+              "type": "string",
+              "value": "virtual"
+            }
+          ]
         },
         "optional": true
       },
@@ -647,6 +674,13 @@
         "optional": true
       },
       "country": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
+      "url": {
         "type": "objectAttribute",
         "value": {
           "type": "string"

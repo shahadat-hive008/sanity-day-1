@@ -1,9 +1,10 @@
 import {defineField, defineType} from 'sanity'
-
+import {UsersIcon} from '@sanity/icons'
 export const artistType = defineType({
   name: 'artist',
   title: 'Artist',
   type: 'document',
+  icon: UsersIcon,
   fields: [
     defineField({
       name: 'name',
@@ -16,6 +17,7 @@ export const artistType = defineType({
     defineField({
       name: 'photo',
       type: 'image',
+      options: {hotspot: true},
     }),
   ],
 })

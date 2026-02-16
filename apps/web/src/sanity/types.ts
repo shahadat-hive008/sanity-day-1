@@ -42,7 +42,8 @@ export type Event = {
   _rev: string;
   name?: string;
   slug?: Slug;
-  eventType?: string;
+  eventType?: "in-person" | "virtual";
+  format?: "in-person" | "virtual";
   date?: string;
   doorsOpen?: number;
   venue?: VenueReference;
@@ -117,6 +118,7 @@ export type Venue = {
   name?: string;
   city?: string;
   country?: string;
+  url?: string;
 };
 
 export type Slug = {
@@ -254,7 +256,8 @@ export type EVENT_QUERY_RESULT = {
   _rev: string;
   name?: string;
   slug?: Slug;
-  eventType?: string;
+  eventType?: "in-person" | "virtual";
+  format?: "in-person" | "virtual";
   date: string | string;
   doorsOpen: number | 0;
   venue: {
@@ -266,6 +269,7 @@ export type EVENT_QUERY_RESULT = {
     name?: string;
     city?: string;
     country?: string;
+    url?: string;
   } | null;
   image?: {
     asset?: SanityImageAssetReference;
